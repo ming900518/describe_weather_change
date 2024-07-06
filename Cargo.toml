@@ -1,0 +1,23 @@
+[package]
+name = "describe-weather-change"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.92"
+serde = { version = "1.0.203", features = ["derive"] }
+serde-wasm-bindgen = "0.6.5"
+time = { version = "0.3.36", features = ["macros", "parsing"] }
+
+[profile.release]
+strip = true
+lto = "fat"
+opt-level = 3
+codegen-units = 1
+panic = "abort"
+
+[lints.rust]
+unsafe_code = "forbid"
